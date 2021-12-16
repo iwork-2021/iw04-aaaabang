@@ -111,7 +111,12 @@ extension ViewController {
                 let result = results[0].identifier
                 let confidence = results[0].confidence
                 self.resultLabel.text = result
-                self.confidenceLabel.text = String(format: "%.1f%%", confidence * 100)
+                
+                if confidence > 0.9{
+                    self.confidenceLabel.text = String(format: "%.1f%%", confidence * 100)
+                }else{
+                    self.confidenceLabel.text = "not sure"
+                }
                 print(result)
             }
         } else if let error = error {
